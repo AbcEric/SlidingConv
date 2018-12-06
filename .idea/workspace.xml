@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3bf6dc13-effc-4cb7-9052-b868c5cc8872" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ModelTraining_GPU.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaptchaTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaptchaTraining.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GenCaptcha.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenCaptcha.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GenTrainingData.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenTrainingData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/char6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/make_tfrecords/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_tfrecords/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541576721.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541577294.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541605472.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541605574.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541605824.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541606007.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541606751.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541640598.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541640947.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541687915.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541688042.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541688222.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541694076.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541721112.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541737131.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541742476.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541742869.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541743255.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541762823.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541762908.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541772392.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541772709.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541781761.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541782122.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541782298.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541783634.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541783847.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541785161.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541785182.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541785240.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541822200.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541825090.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541828823.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541829218.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541829479.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541829966.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830159.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830229.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830306.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830458.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830783.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541834257.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data/ocr.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/ocr.tfrecords" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-862700037">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.8" value="4" />
+          <entry key="project.opened" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="ipynb" value="1" />
+          <entry key="jpg" value="12" />
+          <entry key="md" value="1" />
+          <entry key="png" value="39" />
+          <entry key="py" value="42" />
+          <entry key="txt" value="42" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="IPNB" value="1" />
+          <entry key="Image" value="51" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="42" />
+          <entry key="Python" value="42" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="13548" />
+          <entry key="txt" value="46" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="46" />
+          <entry key="Python" value="13548" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ModelTraining_GPU.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="485">
+              <caret line="543" column="89" lean-forward="true" selection-start-line="543" selection-start-column="89" selection-end-line="543" selection-end-column="89" />
+              <folding>
+                <marker date="1543210286876" expanded="true" signature="19871:20864" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Anaconda3/Lib/site-packages/captcha/image.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="112" column="53" lean-forward="true" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="53" />
+              <folding>
+                <element signature="e#137#146#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>utf</find>
+      <find>10</find>
+      <find>decoded</find>
+      <find>resh</find>
+      <find>targets</find>
+      <find>ReadAndDecode</find>
+      <find>sparse</find>
+      <find>sparse_tensor_to_dense</find>
+      <find>tfre</find>
+      <find>queue</find>
+      <find>FEED</find>
+      <find>acc</find>
+      <find>70</find>
+      <find>74</find>
+      <find>73</find>
+      <find>ctc</find>
+      <find>INPUT</find>
+      <find>read</find>
+      <find>model</find>
+      <find>saver</find>
+      <find>31</find>
+      <find>72</find>
+      <find>create_char_dict</find>
+      <find>label.t</find>
+      <find>txt</find>
+      <find>d</find>
+      <find>稍</find>
+      <find>34</find>
+      <find>class_num</find>
+      <find>invert</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/char_word.txt" />
+        <option value="$PROJECT_DIR$/make_tfrecords/label.txt" />
+        <option value="$PROJECT_DIR$/model.py" />
+        <option value="$PROJECT_DIR$/make_tfrecords/images/output/label.txt" />
+        <option value="$PROJECT_DIR$/make_tfrecords/data_to_tfrecord.py" />
+        <option value="$PROJECT_DIR$/data_gen.py" />
+        <option value="$PROJECT_DIR$/make_tfrecords/images/char_word.txt" />
+        <option value="$PROJECT_DIR$/training_data/ocr_char.txt" />
+        <option value="$PROJECT_DIR$/train_test.py" />
+        <option value="$PROJECT_DIR$/training_data_char/char_dict.txt" />
+        <option value="$PROJECT_DIR$/ModelTraining.py" />
+        <option value="$PROJECT_DIR$/CaptchaTraining.py" />
+        <option value="$PROJECT_DIR$/make_tfrecords/test.py" />
+        <option value="$PROJECT_DIR$/GenTrainingData.py" />
+        <option value="$PROJECT_DIR$/ModelTraining_GPU.py" />
+        <option value="$PROJECT_DIR$/GenCaptcha.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="272" />
+    <option name="y" value="97" />
+    <option name="width" value="1378" />
+    <option name="height" value="773" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sliding_convolution" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sliding_convolution" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sliding_convolution" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sliding_convolution" type="462c0819:PsiDirectoryNode" />
+              <item name="make_tfrecords" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.GenCaptcha">
+    <configuration name="CaptchaTraining" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sliding_convolution" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CaptchaTraining.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GenCaptcha" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sliding_convolution" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GenCaptcha.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GenTrainingData" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sliding_convolution" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GenTrainingData.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ModelTraining_GPU" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sliding_convolution" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ModelTraining_GPU.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sliding_convolution" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/make_tfrecords" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/make_tfrecords/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.GenTrainingData" />
+      <item itemvalue="Python.CaptchaTraining" />
+      <item itemvalue="Python.GenCaptcha" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.ModelTraining_GPU" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.GenCaptcha" />
+        <item itemvalue="Python.ModelTraining_GPU" />
+        <item itemvalue="Python.GenTrainingData" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.CaptchaTraining" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3bf6dc13-effc-4cb7-9052-b868c5cc8872" name="Default Changelist" comment="" />
+      <created>1541576536348</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1541576536348</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18292683" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36088476" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32945284" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32945284" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32945284" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18292683" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28987193" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32945284" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32945284" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32945284" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/30094265_4150691021.jpg" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/46293843_607110103.jpg" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/label.txt" />
+    <entry file="file://$PROJECT_DIR$/char_word.txt" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/numpy/core/numeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="532" lean-forward="true" selection-start-line="532" selection-end-line="532" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/label.txt" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/char_word.txt" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images_bak/label.txt" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="300">
+            <caret line="10" column="45" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="45" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010118.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010091.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010070.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010061.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010060.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010051.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010041.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010025.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010011.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010068.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010001.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010075.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010078.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010002.bin.png" />
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/input/1568/010075.bin.png" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/tensorflow/python/platform/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/2b153238a1a838a5775bb2704d791f8c.jpg" />
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="28" column="143" selection-start-line="28" selection-start-column="143" selection-end-line="28" selection-end-column="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/char_word.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="79" column="1" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/label.txt" />
+    <entry file="file://$PROJECT_DIR$/data_gen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="678">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/char_std_5990.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="5988" column="1" lean-forward="true" selection-start-line="5988" selection-start-column="1" selection-end-line="5988" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/ocr_char.txt" />
+    <entry file="file://$PROJECT_DIR$/training_data_char/ocr_char.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data_char/char_dict.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/data_to_tfrecord.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5040">
+          <caret line="172" selection-start-line="172" selection-end-line="172" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AutoRegistration4Leyue/Verifycode_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="168" column="33" selection-start-line="168" selection-start-column="33" selection-end-line="168" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data_char/label.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="2025" column="19" selection-start-line="2025" selection-end-line="2025" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/label.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="217" column="44" selection-start-line="217" selection-start-column="44" selection-end-line="217" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/char_dict.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103734" />
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/pkgs/pillow-4.2.1-py36hdb25ab2_0/Lib/site-packages/PIL/EpsImagePlugin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="329" column="34" lean-forward="true" selection-start-line="329" selection-start-column="34" selection-end-line="329" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_tfrecords/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1770">
+          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/PIL/Image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3365">
+          <caret line="1497" column="67" selection-start-line="1497" selection-start-column="67" selection-end-line="1497" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/PIL/ImageOps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModelTraining.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="338" selection-start-line="338" selection-end-line="338" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CaptchaTraining.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="494" column="29" selection-start-line="494" selection-start-column="29" selection-end-line="494" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GenTrainingData.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="258" column="40" lean-forward="true" selection-start-line="258" selection-start-column="40" selection-end-line="258" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModelTraining_GPU.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="543" column="89" lean-forward="true" selection-start-line="543" selection-start-column="89" selection-end-line="543" selection-end-column="89" />
+          <folding>
+            <marker date="1543210286876" expanded="true" signature="19871:20864" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/captcha/image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="112" column="53" lean-forward="true" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="53" />
+          <folding>
+            <element signature="e#137#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
