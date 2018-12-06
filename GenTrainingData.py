@@ -28,7 +28,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 IMAGE_LABEL = "image_label.txt"
 LABEL = "label.txt"
-RECORD_FILE = "ocr.tfrecords"
+RECORD_FILE = "captcha_ocr.tfrecords"
 CHAR_DICT = "char_dict.txt"
 
 
@@ -44,7 +44,8 @@ def gen_image_label(img_path, output_path):
 
     for i in range(0, len(file_list)):
         filename = file_list[i]
-        item = filename + " " + filename[0:4] + "\n"  # 头四位是标签(前闭后开)
+        # item = filename + " " + filename[0:4] + "\n"  # 头四位是标签(前闭后开)
+        item = filename + " " + filename[0:-4] + "\n"  # 文件名是标签
         fp.write(item)
 
     print(full_img_label + " is generated!")
@@ -100,6 +101,34 @@ def get_char_code(dict_list, char):
     dict_list[x + 1] = char
     return dict_list, str(x + 1)
 
+# 对图形文件进行转换，填充为指定大小：填充0或255
+def image_convert(imgfile, conv_size=(32, 280), conv_color=[0, 0, 0]):
+    img = cv2.imread(imgfile, cv2.IMREAD_GRAYSCALE)
+
+    if img.ndim == 3:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    height, width = img.shape
+    # print(height, width, conv_size)
+
+    # 当输入图像很扁时，宽度调整为变换后的宽度，在下面填充：
+    if height / width < conv_size[0] / conv_size[1]:
+        ratio = conv_size[1] / width
+        img = cv2.resize(img, (0, 0), fx=ratio, fy=ratio)  # 注意：直接指定是，与shape相反！是宽x高
+        img = cv2.copyMakeBorder(img, 0, conv_size[0] - img.shape[0], 0, 0, cv2.BORDER_CONSTANT, value=conv_color)
+    else:
+        # 当输入图像较为方正时，高度调整为变换后的高度，在右边填充：
+        # 如果宽<<高，考虑需对图片进行旋转：
+        ratio = conv_size[0] / height
+        img = cv2.resize(img, (0, 0), fx=ratio, fy=ratio)
+        img = cv2.copyMakeBorder(img, 0, 0, 0, conv_size[1] - img.shape[1], cv2.BORDER_CONSTANT, value=conv_color)
+
+    # cv2.namedWindow("Image")
+    # cv2.imshow("ImageC", img)
+    # cv2.waitKey(0)
+
+    return img
+
 
 #
 # 将图片文件转换TFRecord格式：
@@ -148,11 +177,12 @@ def gen_tfrecord(img_path, output_path, recfile_name=RECORD_FILE, img_size=[280,
         # labels.append(item_label)
 
         # 写TFRecord：
-        img = Image.open(img_name)
-        img = img.convert('L')
+        # img = Image.open(img_name)
+        img = image_convert(img_name, conv_size=[img_size[1], img_size[0]], conv_color=[255, 255, 255])
+
+        # img = img.convert('L')
         # print("img size: ", img.shape)
-        # img = img.resize((280, 32))     # 调整大小为统一尺寸:
-        img = img.resize(img_size)  # 调整大小为统一尺寸:?
+        # img = img.resize(img_size)  # 调整大小为统一尺寸:?
         img_raw = img.tobytes()
 
         label = np.asarray(item_label, dtype=np.int64)
@@ -250,21 +280,21 @@ def read_tfrecord(recfile_path, recfile_name=RECORD_FILE, img_size=[32, 280], sh
 
 # dictList = []
 
-img_path = './data/problem3/train'
+img_path = './training_data/captcha_img'
 output_path = './training_data'
 
-read_tfrecord(output_path, 'ocr.tfrecords', show_num=100)
+# read_tfrecord(output_path, img_size=[32, 180], show_num=10)
 
 # 1.生成标签列表文件：
-# gen_image_label(img_path, output_path)
-csvfile = "./data/problem3/content_train.csv"
+gen_image_label(img_path, output_path)
+# csvfile = "./data/problem3/content_train.csv"
 # gen_ocr_image_label(csvfile, output_path)
 
 # 2. 生成TFRecord文件：
-# gen_tfrecord(img_path, output_path)
+gen_tfrecord(img_path, output_path, img_size=[180, 32])
+# image_convert('./training_data/captcha_img/0cODdY2jW7.png', conv_size=(32, 180), conv_color=[255, 255, 255])
 
 # 3. 读取TFRecord并显示图片：show_num为显示的数量
-# read_tfrecord(output_path, 'ocr.tfrecords', show_num=40)
-# read_tfrecord(output_path)
+read_tfrecord(output_path, img_size=[32, 180], show_num=10)
 
 

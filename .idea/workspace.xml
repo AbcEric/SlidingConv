@@ -2,56 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bf6dc13-effc-4cb7-9052-b868c5cc8872" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ModelTraining_GPU.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaptchaTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaptchaTraining.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GenCaptcha.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenCaptcha.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GenTrainingData.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenTrainingData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/char6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_tfrecords/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_tfrecords/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541576721.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541577294.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541605472.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541605574.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541605824.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541606007.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541606751.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541640598.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541640947.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541687915.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541688042.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541688222.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541694076.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541721112.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541737131.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541742476.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541742869.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541743255.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541762823.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541762908.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541772392.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541772709.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541781761.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541782122.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541782298.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541783634.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541783847.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541785161.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541785182.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541785240.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541822200.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541825090.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541828823.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541829218.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541829479.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541829966.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830159.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830229.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830306.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830458.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541830783.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/events.out.tfevents.1541834257.ERIC-PC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_data/ocr.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/ocr.tfrecords" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/char_std_5990.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_train.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.tfrecords" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data/char_dict.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/char_dict.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data/image_label.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/image_label.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data/label.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/label.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data_char/captcha.tfrecord" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data_char/char_dict.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data_char/image_label.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data_char/label.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data_char/ocr.tfrecords" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data_char/ocr_char.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,14 +70,45 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1409656471">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="749" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="749" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="3" />
+          <entry key="txt" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ModelTraining_GPU.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="543" column="89" lean-forward="true" selection-start-line="543" selection-start-column="89" selection-end-line="543" selection-end-column="89" />
+            <state relative-caret-position="245">
+              <caret line="571" column="118" selection-start-line="571" selection-start-column="11" selection-end-line="571" selection-end-column="118" />
               <folding>
                 <marker date="1543210286876" expanded="true" signature="19871:20864" ph="..." />
               </folding>
@@ -123,24 +119,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-115">
+              <caret line="76" column="52" lean-forward="true" selection-start-line="76" selection-start-column="52" selection-end-line="76" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/Anaconda3/Lib/site-packages/captcha/image.py">
+        <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="112" column="53" lean-forward="true" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="53" />
-              <folding>
-                <element signature="e#137#146#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-25">
+              <caret line="274" selection-start-line="274" selection-end-line="274" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/training_data/image_label.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-180" />
           </provider>
         </entry>
       </file>
@@ -206,8 +203,8 @@
         <option value="$PROJECT_DIR$/ModelTraining.py" />
         <option value="$PROJECT_DIR$/CaptchaTraining.py" />
         <option value="$PROJECT_DIR$/make_tfrecords/test.py" />
-        <option value="$PROJECT_DIR$/GenTrainingData.py" />
         <option value="$PROJECT_DIR$/ModelTraining_GPU.py" />
+        <option value="$PROJECT_DIR$/GenTrainingData.py" />
         <option value="$PROJECT_DIR$/GenCaptcha.py" />
       </list>
     </option>
@@ -228,13 +225,13 @@
         <subPane>
           <expand>
             <path>
-              <item name="sliding_convolution" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sliding_convolution" type="462c0819:PsiDirectoryNode" />
+              <item name="SlidingConv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SlidingConv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="sliding_convolution" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sliding_convolution" type="462c0819:PsiDirectoryNode" />
-              <item name="make_tfrecords" type="462c0819:PsiDirectoryNode" />
+              <item name="SlidingConv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SlidingConv" type="462c0819:PsiDirectoryNode" />
+              <item name="training_data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -373,8 +370,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.GenCaptcha" />
-        <item itemvalue="Python.ModelTraining_GPU" />
         <item itemvalue="Python.GenTrainingData" />
+        <item itemvalue="Python.ModelTraining_GPU" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.CaptchaTraining" />
       </list>
@@ -439,7 +436,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/30094265_4150691021.jpg" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/46293843_607110103.jpg" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/label.txt" />
     <entry file="file://$PROJECT_DIR$/char_word.txt" />
@@ -554,18 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_data/label.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="217" column="44" selection-start-line="217" selection-start-column="44" selection-end-line="217" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_data/char_dict.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103734" />
-      </provider>
-    </entry>
     <entry file="file://D:/Anaconda3/pkgs/pillow-4.2.1-py36hdb25ab2_0/Lib/site-packages/PIL/EpsImagePlugin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
@@ -601,13 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CaptchaTraining.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="494" column="29" selection-start-line="494" selection-start-column="29" selection-end-line="494" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GenTrainingData.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -615,40 +592,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="258" column="40" lean-forward="true" selection-start-line="258" selection-start-column="40" selection-end-line="258" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModelTraining_GPU.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="543" column="89" lean-forward="true" selection-start-line="543" selection-start-column="89" selection-end-line="543" selection-end-column="89" />
-          <folding>
-            <marker date="1543210286876" expanded="true" signature="19871:20864" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Anaconda3/Lib/site-packages/captcha/image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="112" column="53" lean-forward="true" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="53" />
+        <state relative-caret-position="215">
+          <caret line="220" column="23" selection-start-line="220" selection-start-column="8" selection-end-line="220" selection-end-column="23" />
           <folding>
             <element signature="e#137#146#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/char_dict.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1344" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/label.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3534">
+          <caret line="207" column="23" lean-forward="true" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/image_label.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModelTraining_GPU.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="571" column="118" selection-start-line="571" selection-start-column="11" selection-end-line="571" selection-end-column="118" />
+          <folding>
+            <marker date="1543210286876" expanded="true" signature="19871:20864" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CaptchaTraining.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="90" column="19" lean-forward="true" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="274" selection-start-line="274" selection-end-line="274" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-115">
+          <caret line="76" column="52" lean-forward="true" selection-start-line="76" selection-start-column="52" selection-end-line="76" selection-end-column="52" />
         </state>
       </provider>
     </entry>
