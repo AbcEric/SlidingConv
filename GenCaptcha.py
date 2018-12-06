@@ -5,7 +5,7 @@
 # 2. 图片保存在training_data/captcha_img下；
 # 3. 修改了image的generate_image(): 可根据情况修改颜色，是否添加干扰点和干扰线；
 #
-# Q: 宽度不够，感觉较为瘦高？
+# Q: 宽度不够，感觉较为瘦高？小写英文字母通常瘦高，宽度为高度的一半？
 
 from captcha.image import ImageCaptcha
 import numpy as np
@@ -67,9 +67,7 @@ def gen_captcha_text_and_image(textlen, fontsize, fontname):
     # width = 160, height = 60, fonts = None, font_sizes = None
     # image = ImageCaptcha()
     # image = ImageCaptcha(width=300, height=200, fonts=['C:\Windows\Fonts\Calibri.ttf'], font_sizes=(42, 50, 56))
-    # image = ImageCaptcha(width=400, height=160, fonts=['C:\Windows\Fonts\Georgia.ttf'], font_sizes=(120, 120))
-    image = ImageCaptcha(width=int(fontsize*(textlen+1)/2), height=int(fontsize), fonts=[fontname], font_sizes=(fontsize, fontsize))
-    # image = ImageCaptcha(width=300, height=200, fonts=['D:\Anaconda3\Lib\site-packages\captcha\data\DroidSansMono.ttf'], font_sizes=(100, 120, 120))
+    image = ImageCaptcha(width=int(fontsize*(textlen+1)/2), height=int(fontsize), fonts=[fontname], font_sizes=(fontsize-5, fontsize-10))
 
     captcha_text = random_captcha_text(captcha_size=textlen)
     captcha_text = ''.join(captcha_text)
@@ -82,21 +80,20 @@ def gen_captcha_text_and_image(textlen, fontsize, fontname):
 
     captcha_image = np.array(captcha_image)
 
-
     return captcha_text, captcha_image
 
 
 if __name__ == '__main__':
     ##展示验证码
 
-    fontslist = [r'C:\Windows\Fonts\Georgia.ttf', r'C:\Windows\Fonts\times.ttf', r'C:\Windows\Fonts\Calibri.ttf', r'C:\Windows\Fonts\Arial.ttf', r'C:\Windows\Fonts\ahronbd.ttf', r'C:\Windows\Fonts\simsunb.ttf']
+    fontslist = [r'C:\Windows\Fonts\Georgia.ttf', r'C:\Windows\Fonts\times.ttf', r'C:\Windows\Fonts\Calibri.ttf', r'C:\Windows\Fonts\Arial.ttf', r'C:\Windows\Fonts\msyh.ttc', r'C:\Windows\Fonts\simsunb.ttf']
 
-    for i in range(1000):
+    for i in range(10000):
         textlen = random.randint(2, 10)
-        fontsize = random.randint(30, 160)
+        fontsize = random.randint(80, 200)
         fontname = fontslist[random.randint(0, len(fontslist)-1)]
+        print(i, textlen, fontsize, fontname)
         text, image = gen_captcha_text_and_image(textlen, fontsize, fontname)
-        print(i, textlen, fontsize, fontname, text)
 
         # f = plt.figure()
         # ax = f.add_subplot(111)

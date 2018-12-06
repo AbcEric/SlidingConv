@@ -6,19 +6,18 @@
 #   太长也会导致ctc_loss出现"No valid path found"
 # 2.根据样本调整参数，包括：样本的类别总数（过大会导致部分字符的权重极高，很难判断是哪一个？），图片宽度，字符的长宽等。
 #   一开始需要设置好，训练后不能更改！
-# 3.相关数据：./training_data/ocr_char.txt、label.txt和ocr.tfrecords。注意文本格式的差异：
-#   Windows下文本文件在每一行末尾有一个回车和换行，用0x0D和0x0A两个字符("\r\n")表示；而UNIX文本只有一个换行，0x0A表示换行("\n")。
+# 3.相关数据：./training_data/char_dict.txt、label.txt和captcha_ocr.tfrecords。注意文本格式的差异：
+# 4.tf.reshape()与缺省处理宽度一致：如32x280
+# 5.Windows下文本文件在每一行末尾有一个回车和换行，用0x0D和0x0A两个字符("\r\n")表示；而UNIX文本只有一个换行，0x0A表示换行("\n")。
 #   暂用notepad++进行格式转换，或者在生成时考虑格式；
 
 
 # Q:
-# 1.CUDA的使用？GPU型号？TF中如何设置？
-# 2.滑动窗口用于目标检测：对每个滑动区域预测目标出现的概率，计算成本高！窗口过大会影响性能，过小计算量大。
+# 1.字体的宽度通常只有高度的一半：不用方形做输入？
+# 2.留出部分数据用于验证，避免过拟合：生成数据时分为training_data和testing_data
 # 3.如何多线程？
-# 4.leariningrate先快后慢：指数型（OK）
-# 5.CTC？
-# 6.转换程序
-# 7.class_num为何数量要加1？
+# 4.CTC：
+#
 
 # -*- coding:utf-8 -*-
 import os
@@ -29,16 +28,16 @@ import heapq
 
 #os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-LOAD_MODEL = True
-# TRAINING = True            # 训练还是预测
-TRAINING = False            # 训练还是预测
+LOAD_MODEL = False
+TRAINING = True            # 训练还是预测
+# TRAINING = False            # 训练还是预测
 # tf.app.flags.DEFINE_string('mode', 'test', 'train or test')     # 重复执行有问题？ 好处是运行可带参数 --mode xxx
 
 
 #
 # 神经网络定义：
 #
-def sliding_generate_batch_layer(inputs,character_width=32, character_step=8):
+def sliding_generate_batch_layer(inputs, character_width=32, character_step=8):
     # inputs: batches*32*280*1
 
     for b in range(inputs.shape[0]):
@@ -219,7 +218,7 @@ def read_and_decode(fileName):
 
     # img = tf.reshape(img, [32,280,1])               # 为何变为[32, 280]? 如何填充0？
     # 每张图片的宽、高和颜色通道。还是高、宽？
-    img = tf.reshape(img, [32, 96, 1])               # 为何变为[32, 280]? 如何填充0？
+    img = tf.reshape(img, [32, 180, 1])               # 为何变为[32, 280]? 如何填充0？
 
     # 归一化？
     img = tf.cast(img, tf.float32) * (1. / 255) - 0.5
@@ -232,25 +231,25 @@ class SlidingConvolution(object):
     def __init__(self, is_train=False):
         # self.class_num = 5990           # 要识别的分类类别
         # class_num = 标签种类数 + 1，(num_classes - 1)保留用以代表空格标签
-        self.class_num = 37             # 分类类别:数字10+字母26，与ocr_char.txt中的数量相同(为何多1？)
+        self.class_num = 63             # 分类类别:数字10+字母26x2，与ocr_char.txt中的数量相同(多1为空格)
         self.character_step = 8         # ？移动的距离，和输入图片宽度、字符宽度共同确定可以识别的最大字符数量，
                                         # 如；（280-32）/8 = 31。过小训练量加大！
-        self.character_height = 32      # 转换为280*32固定大小，若文字高度本身很小呢？
-        self.character_width = 32       #
+        self.character_height = 32      # 转换为x*32固定大小，若文字高度本身很小呢？
+        self.character_width = 32       # 通常宽度为高度的一半？
 
         # 训练设置：
-        self.train_tfrecords_name = "./training_data_char/captcha.tfrecord"         # 训练数据路径
-        self.train_ocrchar_name = "./training_data_char/char_dict.txt"            # 训练数据路径
-        self.summary_save_path = "./saving_model_char/"                          # 可以一个目录
+        self.train_tfrecords_name = "./training_data/captcha_ocr.tfrecords"         # 训练数据路径
+        self.train_ocrchar_name = "./training_data/char_dict.txt"            # 训练数据路径
+        self.summary_save_path = "./saving_model/"                          # 可以一个目录
         self.summary_steps = 100
         self.save_steps = 10
-        self.save_path = "./saving_model_char/"
+        self.save_path = "./saving_model/"
 
         # 测试设置:
-        self.model_path = "./saving_model_char/sliding_conv.ckpt-740"
+        self.model_path = "./saving_model/sliding_conv.ckpt-740"
 
         if is_train:
-            self.batch_size = 64
+            self.batch_size = 32
             self.with_clip = True       # 采用Gradient Clipping
             self.network = train_network(batch_size=self.batch_size, class_num=self.class_num,
                                    character_height=self.character_height, character_width=self.character_width,
@@ -268,7 +267,8 @@ class SlidingConvolution(object):
             self.graph = tf.Graph()
             
             # 需了解环境的情况：
-            gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
+            # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
+            gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.5)
 
             self.session = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options), graph=self.graph)
 
@@ -326,7 +326,6 @@ class SlidingConvolution(object):
         train_data, train_label = read_and_decode(self.train_tfrecords_name)
 
         # train_inputs是Tensor,每个元素为（32,280,1），targets是稀疏张量（SparseTensor），高效存储很多为0的数据。
-        # train_inputs是Tensor,每个元素为（32,96,1），targets是稀疏张量（SparseTensor），高效存储很多为0的数据。
         # 每次SHUFFLE生成指定batch_size个的数据：因此train_inputs变为(batch_size, 32, 96, 1), 而train_data为（32,96,1）
         train_inputs, train_targets = tf.train.shuffle_batch([train_data, train_label],
                                                              batch_size=self.batch_size, capacity=50000,  # capacity队列中最大的元素数
@@ -384,7 +383,7 @@ class SlidingConvolution(object):
         merge_summary = tf.summary.merge_all()
 
         # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)        # 作用？
-        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.2)        # 作用？
+        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.1)        # 作用？
         print(gpu_options)
         init = tf.global_variables_initializer()
         
@@ -429,13 +428,13 @@ class SlidingConvolution(object):
         # input_data = cv2.resize(input_data, (32, int(width / ratio)))
         # 1, 32, 96, 1
         # input_data = cv2.resize(input_data, (32, 96))
-        input_data = cv2.resize(input_data, (96, 32))           # !!!!!!!!!!!!
+        input_data = cv2.resize(input_data, (180, 32))           # !!!!!!!!!!!!
         print("Photo Size1: ", input_data.shape)
 
         # input_data.save('./Label_convert.jpg')  # 存下图片
 
         # input_data = input_data.reshape((1, 32, int(width / ratio), 1))
-        input_data = input_data.reshape((1, 32, 96, 1))
+        input_data = input_data.reshape((1, 32, 180, 1))
         scaled_data = np.asarray(input_data / np.float32(255) - np.float32(0.5))
 
         with self.session.as_default():
