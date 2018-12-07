@@ -26,15 +26,18 @@ import cv2
 # GPU配置：
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-IMAGE_LABEL = "image_label.txt"
-LABEL = "label.txt"
-RECORD_FILE = "captcha_ocr.tfrecords"
+TRAINFILE_LABEL = "image_train_label.txt"
+TESTFILE_LABEL = "image_test_label.txt"
+TRAIN_LABEL = "train_label.txt"
+TEST_LABEL = "test_label.txt"
+TRAIN_RECORD_FILE = "captcha_ocr_train.tfrecords"
+TEST_RECORD_FILE = "captcha_ocr_test.tfrecords"
 CHAR_DICT = "char_dict.txt"
 
 
 # 不同的来源不同，生成image_label.txt：
-def gen_image_label(img_path, output_path):
-    full_img_label = os.path.join(output_path, IMAGE_LABEL)
+def gen_image_label(img_path, output_path, imagelabel):
+    full_img_label = os.path.join(output_path, imagelabel)
     if os.path.isfile(full_img_label):
         print("%s exists, now deleted!" % full_img_label)
         os.remove(full_img_label)
@@ -56,7 +59,7 @@ def gen_image_label(img_path, output_path):
 
 # 针对OCR生成image_label.txt：根据CSV文件：
 def gen_ocr_image_label(csv_file, output_path):
-    full_img_label = os.path.join(output_path, IMAGE_LABEL)
+    full_img_label = os.path.join(output_path, TRAINFILE_LABEL)
     if os.path.isfile(full_img_label):
         print("%s exists, now deleted!" % full_img_label)
         os.remove(full_img_label)
@@ -101,6 +104,7 @@ def get_char_code(dict_list, char):
     dict_list[x + 1] = char
     return dict_list, str(x + 1)
 
+
 # 对图形文件进行转换，填充为指定大小：填充0或255
 def image_convert(imgfile, conv_size=(32, 280), conv_color=[0, 0, 0]):
     img = cv2.imread(imgfile, cv2.IMREAD_GRAYSCALE)
@@ -133,11 +137,11 @@ def image_convert(imgfile, conv_size=(32, 280), conv_color=[0, 0, 0]):
 #
 # 将图片文件转换TFRecord格式：
 #
-def gen_tfrecord(img_path, output_path, recfile_name=RECORD_FILE, img_size=[280, 32], max_lablelen=30):
+def gen_tfrecord(img_path, output_path, file_label=TRAINFILE_LABEL, rec_file=TRAIN_RECORD_FILE, img_label=TRAIN_LABEL, img_size=[280, 32], max_lablelen=30):
     print("Converting data into tfrecord ...\n")
 
     # TFRecord文件是否存在
-    full_rec_name = os.path.join(output_path, RECORD_FILE)
+    full_rec_name = os.path.join(output_path, rec_file)
     if os.path.isfile(full_rec_name):
         print("%s exists, now deleted!" % full_rec_name)
         os.remove(full_rec_name)
@@ -145,14 +149,15 @@ def gen_tfrecord(img_path, output_path, recfile_name=RECORD_FILE, img_size=[280,
 
     # char_dict.txt文件是否存在
     full_char_dict = os.path.join(output_path, CHAR_DICT)
-    if os.path.isfile(full_char_dict):
-        print("%s exists, now deleted!" % full_char_dict)
-        os.remove(full_char_dict)
+    if rec_file == TRAIN_RECORD_FILE:       # 要先执行TRAIN_RECORD_FILE, 这是才重新生成char_dict
+        if os.path.isfile(full_char_dict):
+            print("%s exists, now deleted!" % full_char_dict)
+            os.remove(full_char_dict)
 
     char_dict = {}  # 采用字典方式
 
-    full_label_file = os.path.join(output_path, LABEL)
-    full_img_label = os.path.join(output_path, IMAGE_LABEL)
+    full_label_file = os.path.join(output_path, img_label)
+    full_img_label = os.path.join(output_path, file_label)
 
     fp = open(full_label_file, "w")
     img_label = open(full_img_label)
@@ -201,23 +206,27 @@ def gen_tfrecord(img_path, output_path, recfile_name=RECORD_FILE, img_size=[280,
     writer.close()
 
     # 生成可能的标签字母表：
-    dict_file = os.path.join(output_path, CHAR_DICT)
+    if rec_file == TRAIN_RECORD_FILE:       # 要先执行TRAIN_RECORD_FILE, 这是才重新生成char_dict
+        dict_file = os.path.join(output_path, CHAR_DICT)
 
-    fp = open(dict_file, 'w', encoding='utf-8')
-    for x, word in enumerate(char_dict):
-        if char_dict[x] != '\n':
-            fp.write(char_dict[x])
-            fp.write("\n")
+        fp = open(dict_file, 'w', encoding='utf-8')
+        for x, word in enumerate(char_dict):
+            if char_dict[x] != '\n':
+                fp.write(char_dict[x])
+                fp.write("\n")
 
-    fp.close()
-    print("Convert finished：", dict_file, full_rec_name, full_label_file)
+        fp.close()
+        print("Convert finished：", dict_file, full_rec_name, full_label_file)
+    else:
+        print("Convert finished：", full_rec_name, full_label_file)
+
     return
 
 
 #
 # 读取TFRecord：需要知道打包时的格式
 #
-def read_tfrecord(recfile_path, recfile_name=RECORD_FILE, img_size=[32, 280], show_num=2):
+def read_tfrecord(recfile_path, recfile_name=TRAIN_RECORD_FILE, img_size=[32, 280], show_num=2):
     # TFRecord文件是否存在
     full_rec_name = os.path.join(recfile_path, recfile_name)
     print("Reading tfrecord：", full_rec_name)
@@ -280,21 +289,28 @@ def read_tfrecord(recfile_path, recfile_name=RECORD_FILE, img_size=[32, 280], sh
 
 # dictList = []
 
-img_path = './training_data/captcha_img'
+train_img_path = './training_data/train_img'
+test_img_path = './training_data/test_img'
 output_path = './training_data'
 
 # read_tfrecord(output_path, img_size=[32, 180], show_num=10)
+# read_tfrecord(output_path, recfile_name=TEST_RECORD_FILE, img_size=[32, 180], show_num=5)
+# exit(1)
 
 # 1.生成标签列表文件：
-gen_image_label(img_path, output_path)
+gen_image_label(train_img_path, output_path, TRAINFILE_LABEL)
+gen_image_label(test_img_path, output_path, TESTFILE_LABEL)
 # csvfile = "./data/problem3/content_train.csv"
 # gen_ocr_image_label(csvfile, output_path)
 
 # 2. 生成TFRecord文件：
-gen_tfrecord(img_path, output_path, img_size=[180, 32])
+# 训练集：
+gen_tfrecord(train_img_path, output_path, img_size=[180, 32])
+# 测试集：
+gen_tfrecord(test_img_path, output_path, file_label=TESTFILE_LABEL, rec_file=TEST_RECORD_FILE, img_label=TEST_LABEL, img_size=[180, 32])
 # image_convert('./training_data/captcha_img/0cODdY2jW7.png', conv_size=(32, 180), conv_color=[255, 255, 255])
 
 # 3. 读取TFRecord并显示图片：show_num为显示的数量
-read_tfrecord(output_path, img_size=[32, 180], show_num=10)
-
+read_tfrecord(output_path, img_size=[32, 180], show_num=5)
+read_tfrecord(output_path, recfile_name=TEST_RECORD_FILE, img_size=[32, 180], show_num=5)
 

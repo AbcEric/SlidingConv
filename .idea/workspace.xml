@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bf6dc13-effc-4cb7-9052-b868c5cc8872" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CaptchaTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaptchaTraining.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GenCaptcha.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenCaptcha.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_data/captcha_ocr.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/captcha_ocr.tfrecords" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GenTrainingData.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenTrainingData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/training_data/char_dict.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/char_dict.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_data/image_label.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/image_label.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_data/label.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/label.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,70 +64,66 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="749" />
+          <entry key="py" value="1196" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="749" />
+          <entry key="Python" value="1196" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="3" />
-          <entry key="txt" value="3" />
+          <entry key="py" value="15" />
+          <entry key="txt" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="3" />
+          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="Python" value="15" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="GenCaptcha.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1985">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+            <state relative-caret-position="210">
+              <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CaptchaTraining.py" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CaptchaTraining.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+            <state relative-caret-position="120">
+              <caret line="248" column="62" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
               <folding>
-                <element signature="e#16389#17081#0" />
+                <element signature="e#1074#1716#0" />
+                <element signature="e#1847#8848#0" />
+                <element signature="e#11545#13616#0" />
+                <element signature="e#16540#17015#0" />
+                <element signature="e#17149#17507#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenTrainingData.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="288" column="38" selection-start-line="288" selection-start-column="38" selection-end-line="288" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="session.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Anaconda3/Lib/site-packages/tensorflow/python/client/session.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2600">
-              <caret line="1408" selection-start-line="1408" selection-end-line="1408" />
+            <state relative-caret-position="390">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -236,6 +228,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -267,6 +260,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="GenCaptcha" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sliding_convolution" />
@@ -285,6 +281,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="GenTrainingData" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sliding_convolution" />
@@ -303,6 +302,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="ModelTraining_GPU" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sliding_convolution" />
@@ -321,6 +323,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sliding_convolution" />
@@ -339,6 +344,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.GenTrainingData" />
@@ -371,65 +379,51 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1455" height="975" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18252291" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36038187" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32945284" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32945284" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24390244" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32945284" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35972062" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32945284" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32945284" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32945284" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18292683" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32945284" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28987193" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28987193" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32945284" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32945284" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32945284" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/label.txt" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/char_word.txt" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images_bak/label.txt" />
-    <entry file="file://$PROJECT_DIR$/README.md" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010118.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010091.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010070.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010061.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010060.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010051.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010041.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010025.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010011.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010068.bin.png" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010001.bin.png" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010075.bin.png" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010078.bin.png" />
@@ -517,67 +511,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/PIL/ImageFont.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1013586911/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7055">
-          <caret line="5109" column="8" selection-start-line="5109" selection-start-column="8" selection-end-line="5109" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/captcha/image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="154" column="40" selection-start-line="154" selection-start-column="40" selection-end-line="154" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Anaconda3/Lib/site-packages/PIL/ImageFont.py" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1013586911/builtins.py" />
+    <entry file="file://C:/Anaconda3/Lib/site-packages/captcha/image.py" />
     <entry file="file://$PROJECT_DIR$/training_data/char_dict.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_data/image_label.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://C:/Anaconda3/Lib/site-packages/tensorflow/python/client/session.py" />
+    <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/training_data/label.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="212" column="26" lean-forward="true" selection-start-line="212" selection-start-column="26" selection-end-line="212" selection-end-column="26" />
+          <caret line="212" column="26" selection-start-line="212" selection-start-column="26" selection-end-line="212" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/tensorflow/python/client/session.py">
+    <entry file="file://$PROJECT_DIR$/training_data/image_label.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/image_train_label.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/train_label.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2600">
-          <caret line="1408" selection-start-line="1408" selection-end-line="1408" />
+        <state relative-caret-position="-150">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
+    <entry file="file://$PROJECT_DIR$/training_data/test_label.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1985">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        <state relative-caret-position="30">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_data/image_test_label.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="288" column="38" selection-start-line="288" selection-start-column="38" selection-end-line="288" selection-end-column="38" />
+        <state relative-caret-position="390">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../captcha_break/CNN_Demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-984">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my_orc_keras_verification_code_identification/model_gru_ctc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../100-Days-Of-ML-Code/Code/Day6_Logistic_Regression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../CNN_keras/core/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my_orc_keras_verification_code_identification/keras_ocr_recognition/model_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my_orc_keras_verification_code_identification/keras_ocr_recognition/model_lstm_ctc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1584" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my_orc_keras_verification_code_identification/keras_ocr_recognition/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my_orc_keras_verification_code_identification/training_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
+          <folding>
+            <element signature="e#81#137#0" expanded="true" />
+            <element signature="e#1800#3254#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my_orc_keras_verification_code_identification/model_lstm_ctc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1440" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my_orc_keras_verification_code_identification/training_lstm_ctc .py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CaptchaTraining.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        <state relative-caret-position="120">
+          <caret line="248" column="62" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#16389#17081#0" />
+            <element signature="e#1074#1716#0" />
+            <element signature="e#1847#8848#0" />
+            <element signature="e#11545#13616#0" />
+            <element signature="e#16540#17015#0" />
+            <element signature="e#17149#17507#0" />
           </folding>
         </state>
       </provider>

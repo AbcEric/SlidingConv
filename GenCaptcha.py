@@ -86,7 +86,8 @@ def gen_captcha_text_and_image(textlen, fontsize, fontname):
 if __name__ == '__main__':
     ##展示验证码
 
-    fontslist = [r'C:\Windows\Fonts\Georgia.ttf', r'C:\Windows\Fonts\times.ttf', r'C:\Windows\Fonts\Calibri.ttf', r'C:\Windows\Fonts\Arial.ttf', r'C:\Windows\Fonts\msyh.ttc', r'C:\Windows\Fonts\simsunb.ttf']
+    # fontslist = [r'C:\Windows\Fonts\Georgia.ttf', r'C:\Windows\Fonts\times.ttf', r'C:\Windows\Fonts\Calibri.ttf', r'C:\Windows\Fonts\Arial.ttf', r'C:\Windows\Fonts\msyh.ttc', r'C:\Windows\Fonts\simsunb.ttf']
+    fontslist = [r'C:\Windows\Fonts\Georgia.ttf', r'C:\Windows\Fonts\times.ttf', r'C:\Windows\Fonts\Calibri.ttf', r'C:\Windows\Fonts\Arial.ttf', r'C:\Windows\Fonts\msyh.ttf', r'C:\Windows\Fonts\simsunb.ttf']
 
     for i in range(10000):
         textlen = random.randint(2, 10)

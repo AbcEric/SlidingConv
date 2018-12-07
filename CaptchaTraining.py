@@ -28,9 +28,8 @@ import heapq
 
 #os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-LOAD_MODEL = False
+LOAD_MODEL = True
 TRAINING = True            # 训练还是预测
-# TRAINING = False            # 训练还是预测
 # tf.app.flags.DEFINE_string('mode', 'test', 'train or test')     # 重复执行有问题？ 好处是运行可带参数 --mode xxx
 
 
@@ -238,7 +237,8 @@ class SlidingConvolution(object):
         self.character_width = 32       # 通常宽度为高度的一半？
 
         # 训练设置：
-        self.train_tfrecords_name = "./training_data/captcha_ocr.tfrecords"         # 训练数据路径
+        self.train_tfrecords_name = "./training_data/captcha_ocr_train.tfrecords"           # 训练数据路径
+        self.test_tfrecords_name = "./training_data/captcha_ocr_test.tfrecords"             # 测试数据路径
         self.train_ocrchar_name = "./training_data/char_dict.txt"            # 训练数据路径
         self.summary_save_path = "./saving_model/"                          # 可以一个目录
         self.summary_steps = 100
@@ -246,7 +246,7 @@ class SlidingConvolution(object):
         self.save_path = "./saving_model/"
 
         # 测试设置:
-        self.model_path = "./saving_model/sliding_conv.ckpt-740"
+        self.model_path = "./saving_model/sliding_conv.ckpt-130"
 
         if is_train:
             self.batch_size = 32
@@ -259,9 +259,7 @@ class SlidingConvolution(object):
             current_path = os.path.dirname(os.path.abspath(__file__))
 
             # 字典对照表
-            self.char_dict = self.create_char_dict(
-                # os.path.join(current_path, "char_word.txt))
-                self.train_ocrchar_name)        # 样本中的所有字符
+            self.char_dict = self.create_char_dict(self.train_ocrchar_name)        # 样本中的所有字符
 
             self.batch_size = 1
             self.graph = tf.Graph()
@@ -324,6 +322,7 @@ class SlidingConvolution(object):
     def train_model(self):
         # 读取并解码数据：
         train_data, train_label = read_and_decode(self.train_tfrecords_name)
+        test_data, test_label = read_and_decode(self.test_tfrecords_name)
 
         # train_inputs是Tensor,每个元素为（32,280,1），targets是稀疏张量（SparseTensor），高效存储很多为0的数据。
         # 每次SHUFFLE生成指定batch_size个的数据：因此train_inputs变为(batch_size, 32, 96, 1), 而train_data为（32,96,1）
@@ -383,7 +382,7 @@ class SlidingConvolution(object):
         merge_summary = tf.summary.merge_all()
 
         # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)        # 作用？
-        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.1)        # 作用？
+        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.7)        # 作用？
         print(gpu_options)
         init = tf.global_variables_initializer()
         
