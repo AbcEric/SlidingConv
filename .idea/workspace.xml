@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bf6dc13-effc-4cb7-9052-b868c5cc8872" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CaptchaTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaptchaTraining.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GenCaptcha.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenCaptcha.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GenTrainingData.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenTrainingData.py" afterDir="false" />
@@ -62,7 +63,7 @@
     <session id="1409656471">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.opened" value="2" />
@@ -387,7 +388,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35972062" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35972062" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
