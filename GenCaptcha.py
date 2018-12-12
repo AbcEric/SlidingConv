@@ -41,6 +41,7 @@ try:
 except ImportError:
     from io import BytesIO
 
+
 def my_generate_image(image, chars, format='png'):
     background = random_color(238, 255)
     color = random_color(10, 200, random.randint(220, 255))

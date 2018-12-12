@@ -6,7 +6,23 @@
       <change beforePath="$PROJECT_DIR$/CaptchaTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaptchaTraining.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GenCaptcha.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenCaptcha.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GenTrainingData.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenTrainingData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_data/char_dict.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/char_dict.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/saving_model/checkpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/events.out.tfevents.1544163104.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/events.out.tfevents.1544163178.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/events.out.tfevents.1544175390.ERIC-PC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-100.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-100.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-100.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-110.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-110.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-110.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-120.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-120.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-120.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-130.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-130.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saving_model/sliding_conv.ckpt-130.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_data/captcha_ocr_train.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/training_data/captcha_ocr_train.tfrecords" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,32 +79,33 @@
     <session id="1409656471">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1196" />
+          <entry key="py" value="3980" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1196" />
+          <entry key="Python" value="3980" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="15" />
+          <entry key="py" value="20" />
           <entry key="txt" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="15" />
+          <entry key="Python" value="20" />
         </counts>
       </usages-collector>
     </session>
@@ -98,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+            <state relative-caret-position="240">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -107,14 +124,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CaptchaTraining.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="248" column="62" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
+            <state relative-caret-position="210">
+              <caret line="236" lean-forward="true" selection-start-line="236" selection-end-line="236" />
               <folding>
-                <element signature="e#1074#1716#0" />
-                <element signature="e#1847#8848#0" />
-                <element signature="e#11545#13616#0" />
-                <element signature="e#16540#17015#0" />
-                <element signature="e#17149#17507#0" />
+                <element signature="e#1135#1777#0" />
+                <element signature="e#1908#8909#0" />
               </folding>
             </state>
           </provider>
@@ -123,8 +137,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="240">
+              <caret line="318" column="26" lean-forward="true" selection-start-line="318" selection-start-column="4" selection-end-line="318" selection-end-column="26" />
+              <folding>
+                <marker date="1544592572668" expanded="true" signature="10472:11503" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,10 +157,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>10</find>
-      <find>decoded</find>
       <find>resh</find>
-      <find>targets</find>
       <find>ReadAndDecode</find>
       <find>sparse</find>
       <find>sparse_tensor_to_dense</find>
@@ -170,6 +184,9 @@
       <find>class_num</find>
       <find>invert</find>
       <find>0.5</find>
+      <find>before</find>
+      <find>CUDA</find>
+      <find>targets</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -191,8 +208,9 @@
         <option value="$PROJECT_DIR$/ModelTraining.py" />
         <option value="$PROJECT_DIR$/make_tfrecords/test.py" />
         <option value="$PROJECT_DIR$/ModelTraining_GPU.py" />
-        <option value="$PROJECT_DIR$/GenCaptcha.py" />
+        <option value="$PROJECT_DIR$/VerifycodeImgConvert.py" />
         <option value="$PROJECT_DIR$/GenTrainingData.py" />
+        <option value="$PROJECT_DIR$/GenCaptcha.py" />
         <option value="$PROJECT_DIR$/CaptchaTraining.py" />
       </list>
     </option>
@@ -208,6 +226,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -224,7 +243,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -383,13 +401,13 @@
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24390244" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24390244" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35972062" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36903375" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993015" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -425,8 +443,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010001.bin.png" />
-    <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010075.bin.png" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010078.bin.png" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/output/010002.bin.png" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/images/input/1568/010075.bin.png" />
@@ -472,13 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../AutoRegistration4Leyue/Verifycode_CNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="168" column="33" selection-start-line="168" selection-start-column="33" selection-end-line="168" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/training_data_char/label.txt" />
     <entry file="file://D:/Anaconda3/pkgs/pillow-4.2.1-py36hdb25ab2_0/Lib/site-packages/PIL/EpsImagePlugin.py" />
     <entry file="file://$PROJECT_DIR$/make_tfrecords/test.py">
@@ -504,7 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/captcha/image.py" />
     <entry file="file://$PROJECT_DIR$/ModelTraining_GPU.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15417">
@@ -519,13 +527,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://C:/Anaconda3/Lib/site-packages/tensorflow/python/client/session.py" />
-    <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/training_data/label.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -557,13 +558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
@@ -616,10 +610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
-          <folding>
-            <element signature="e#81#137#0" expanded="true" />
-            <element signature="e#1800#3254#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -633,16 +623,58 @@
         <state relative-caret-position="-24" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../AutoRegistration4Leyue/VerifycodeImgConvert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="65" column="51" lean-forward="true" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AutoRegistration4Leyue/Verifycode_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="105" column="18" lean-forward="true" selection-start-line="104" selection-start-column="4" selection-end-line="105" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VerifycodeImgConvert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/captcha/image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="218" column="20" lean-forward="true" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GenCaptcha.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GenTrainingData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="318" column="26" lean-forward="true" selection-start-line="318" selection-start-column="4" selection-end-line="318" selection-end-column="26" />
+          <folding>
+            <marker date="1544592572668" expanded="true" signature="10472:11503" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CaptchaTraining.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="248" column="62" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
+        <state relative-caret-position="210">
+          <caret line="236" lean-forward="true" selection-start-line="236" selection-end-line="236" />
           <folding>
-            <element signature="e#1074#1716#0" />
-            <element signature="e#1847#8848#0" />
-            <element signature="e#11545#13616#0" />
-            <element signature="e#16540#17015#0" />
-            <element signature="e#17149#17507#0" />
+            <element signature="e#1135#1777#0" />
+            <element signature="e#1908#8909#0" />
           </folding>
         </state>
       </provider>

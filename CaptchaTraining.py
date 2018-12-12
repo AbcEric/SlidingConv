@@ -4,19 +4,18 @@
 # Attention：
 # 1.lable.txt中标签的长度不能过长：tf.nn.ctc_loss会遇到问题，最大长度由(输入图片宽度-字符宽度)/移动距离决定;
 #   太长也会导致ctc_loss出现"No valid path found"
-# 2.根据样本调整参数，包括：样本的类别总数（过大会导致部分字符的权重极高，很难判断是哪一个？），图片宽度，字符的长宽等。
-#   一开始需要设置好，训练后不能更改！
-# 3.相关数据：./training_data/char_dict.txt、label.txt和captcha_ocr.tfrecords。注意文本格式的差异：
-# 4.tf.reshape()与缺省处理宽度一致：如32x280
-# 5.Windows下文本文件在每一行末尾有一个回车和换行，用0x0D和0x0A两个字符("\r\n")表示；而UNIX文本只有一个换行，0x0A表示换行("\n")。
+# 2.参数调整：样本的类别总数，图片宽度（包括tf.reshape((32,280))），字符的长宽等。一开始需要设置好，训练后不能更改！
+#   相关数据：./training_data/char_dict.txt、label.txt和captcha_ocr.tfrecords。注意文本格式的差异：
+# 3.Windows下文本文件在每一行末尾有一个回车和换行，用0x0D和0x0A两个字符("\r\n")表示；而UNIX文本只有一个换行，0x0A表示换行("\n")。
 #   暂用notepad++进行格式转换，或者在生成时考虑格式；
-
+# 4.将数据分为训练、验证和测试数据集：使用sklearn的from sklearn.model_selection import train_test_split; 读取指定数量，epoch？
+#   在GenTrainingData中增加get_training_test_data()
+# 5.训练数据很关键!!！对与训练数据类似的数据预测效果好，其他数据基本无效！将原始数据拉宽增加训练数据后有效！
+#   如何一般化？还有字体，前后景颜色，字体是否变形，有无干扰数据等；
 
 # Q:
 # 1.字体的宽度通常只有高度的一半：不用方形做输入？
-# 2.留出部分数据用于验证，避免过拟合：生成数据时分为training_data和testing_data
-# 3.如何多线程？
-# 4.CTC：
+# 2.CTC：
 #
 
 # -*- coding:utf-8 -*-
@@ -29,7 +28,7 @@ import heapq
 #os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 LOAD_MODEL = True
-TRAINING = True            # 训练还是预测
+TRAINING = False            # 训练还是预测
 # tf.app.flags.DEFINE_string('mode', 'test', 'train or test')     # 重复执行有问题？ 好处是运行可带参数 --mode xxx
 
 
@@ -242,11 +241,11 @@ class SlidingConvolution(object):
         self.train_ocrchar_name = "./training_data/char_dict.txt"            # 训练数据路径
         self.summary_save_path = "./saving_model/"                          # 可以一个目录
         self.summary_steps = 100
-        self.save_steps = 10
+        self.save_steps = 50
         self.save_path = "./saving_model/"
 
         # 测试设置:
-        self.model_path = "./saving_model/sliding_conv.ckpt-130"
+        self.model_path = "./saving_model/sliding_conv.ckpt-1500"
 
         if is_train:
             self.batch_size = 32
@@ -282,7 +281,7 @@ class SlidingConvolution(object):
                     #     sequence_length: 1-D int32 向量, size为 [batch_size].序列的长度.
                     #     merge_repeated: Default: True.
                     # 输出：
-                    #     decoded: decoded[0]是SparseTensor,保存着解码的结果, 分别为索引矩阵、值向量和shape！.
+                    #     decoded: decoded[0]是SparseTensor,保存着解码的结果, 分别为索引矩阵、值向量和shape！其他[1]呢？
                     self.decoded, self.log_prob = tf.nn.ctc_greedy_decoder(self.network["outputs"], self.network["seq_len"],
                                                                  merge_repeated=True)
 
@@ -322,14 +321,22 @@ class SlidingConvolution(object):
     def train_model(self):
         # 读取并解码数据：
         train_data, train_label = read_and_decode(self.train_tfrecords_name)
+        print("train_data:", train_data)
         test_data, test_label = read_and_decode(self.test_tfrecords_name)
+        print("test_data:", test_data)
 
         # train_inputs是Tensor,每个元素为（32,280,1），targets是稀疏张量（SparseTensor），高效存储很多为0的数据。
         # 每次SHUFFLE生成指定batch_size个的数据：因此train_inputs变为(batch_size, 32, 96, 1), 而train_data为（32,96,1）
         train_inputs, train_targets = tf.train.shuffle_batch([train_data, train_label],
-                                                             batch_size=self.batch_size, capacity=50000,  # capacity队列中最大的元素数
-                                                             min_after_dequeue=10000)        # 当一次出列操作完成后,队列中元素的最小数量,往往用于定义元素的混合级别
+                                                             batch_size=self.batch_size, capacity=5000,  # capacity队列中最大的元素数
+                                                             min_after_dequeue=1000)        # 当一次出列操作完成后,队列中元素的最小数量,往往用于定义元素的混合级别
         print("SHUFFLE(train_inputs, train_data): ", train_inputs, train_data)
+
+        test_inputs, test_targets = tf.train.shuffle_batch([test_data, test_label],
+                                                             batch_size=self.batch_size, capacity=5000,  # capacity队列中最大的元素数
+                                                             min_after_dequeue=1000)        # 当一次出列操作完成后,队列中元素的最小数量,往往用于定义元素的混合级别
+
+
         global_step = tf.Variable(0, trainable=False)
         
         # 学习率设置：
@@ -337,7 +344,7 @@ class SlidingConvolution(object):
         learning_rate = tf.train.exponential_decay(0.001,
                                                    global_step,
                                                    # 10000,
-                                                   500,            # 每1000轮后*0.9
+                                                   200,            # 每1000轮后*0.9
                                                    0.95,
                                                    staircase=True)
         # SparseTensor:
@@ -376,20 +383,26 @@ class SlidingConvolution(object):
 
         # 预测时也要采用如下定义:
         decoded, log_prob = tf.nn.ctc_greedy_decoder(self.network["outputs"], self.network["seq_len"], merge_repeated=True)
+        print("decoded's type and value:", type(decoded), decoded[0])
+        print("targests:", type(targets), targets)
+
+        # reduce_mean()为计算平均值：decoded[0]?
         acc = 1 - tf.reduce_mean(tf.edit_distance(tf.cast(decoded[0], tf.int32), targets))
 
         tf.summary.scalar("accuracy", acc)
         merge_summary = tf.summary.merge_all()
 
         # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)        # 作用？
-        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.7)        # 作用？
-        print(gpu_options)
+        # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.7)        # 作用？
+        # print(gpu_options)
         init = tf.global_variables_initializer()
         
-        with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
+        # with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
+        with tf.Session(config=tf.ConfigProto()) as session:
             session.run(init)
             threads = tf.train.start_queue_runners(sess=session)
             saver = tf.train.Saver(tf.global_variables(), max_to_keep=20)
+
             if LOAD_MODEL:
                 saver.restore(session, self.model_path)                     # 恢复保存的模型，继续训练！
                 print("Restore training model: ", self.model_path)
@@ -400,7 +413,8 @@ class SlidingConvolution(object):
                 step_input, step_target, steps, lr = session.run(
                     [train_inputs, train_targets, global_step, learning_rate])
                 feed = {self.network["inputs"]: step_input, targets: step_target}
-                # print("FEED:", feed)
+                # feed的类型为dict：
+                # print("FEED:", type(feed), feed)
 
                 batch_acc, batch_loss, _ = session.run([acc, loss, optimizer_op], feed)
 
@@ -414,6 +428,17 @@ class SlidingConvolution(object):
                     save_path = saver.save(session, os.path.join(self.save_path, "sliding_conv.ckpt"), global_step=steps)
                     print(save_path)
 
+                # 每100轮用验证数据进行测试：为何实际值很低？且越来越低？验证时也会更新训练参数？
+                # if steps % 100 == 0:
+                #     for i in range(5):
+                #         step_test_input, step_test_target = session.run(
+                #             [test_inputs, test_targets])
+                #         feed = {self.network["inputs"]: step_test_input, targets: step_test_target}
+                #
+                #         batch_test_acc, batch_test_loss, _ = session.run([acc, loss, optimizer_op], feed)
+                #
+                #         print("===Validate=== {}, Step is: {}, batch loss is: {}， acc is {}".format(i, steps, batch_test_loss, batch_test_acc))
+
     # 测试：
     def predict_model(self, input_data):
         if input_data.ndim == 3:
@@ -421,14 +446,13 @@ class SlidingConvolution(object):
             input_data = cv2.cvtColor(input_data, cv2.COLOR_BGR2GRAY)
 
         height, width = input_data.shape
-        print("Photo Size: ", height, width, input_data.shape)
+        # print("Photo Size: ", height, width, input_data.shape)
         ratio = height / 32.0
 
         # input_data = cv2.resize(input_data, (32, int(width / ratio)))
         # 1, 32, 96, 1
         # input_data = cv2.resize(input_data, (32, 96))
         input_data = cv2.resize(input_data, (180, 32))           # !!!!!!!!!!!!
-        print("Photo Size1: ", input_data.shape)
 
         # input_data.save('./Label_convert.jpg')  # 存下图片
 
@@ -443,30 +467,31 @@ class SlidingConvolution(object):
                 # outputs为ndarray，其长度可变，随预测文字的长度而变化。decoded为SparseTensorValue:
                 # 应该用outputs值！ decoded是预测的下一个值！
                 outputs, decoded = self.session.run([self.network["outputs"], self.decoded[0]], feed)
+                print("decoded:", decoded[0], decoded[1], decoded[2])       # decoded[0]为Sparse值的位置, [1]为值，[2]为shape
 
                 predict = []
-                for k in range(outputs.shape[0]):   # 很多字母的概率都很大，很难区分出来！
-                    # 分别找到概率最大和最小的位置，从而可找到相应的字母: 比实际位置+1了？
-                    pos = list(map(list(outputs[k][0]).index, heapq.nlargest(2, list(outputs[k][0]))))
-                    # print(pos)
-                    predict.append(pos[0])
-                    # print(np.max(outputs[k][0]), np.min(outputs[k][0]))
-                    if k == 0:
-                        # print(outputs[k][0][0:37])
-                        print("OUTPUT SHAPE:", outputs.shape)
-                    # for j in range(outputs[k][0].size):
-                        # if outputs[k][0][j] > 0.8:
-                            # print(j, outputs[k][0][j])
+                # for k in range(outputs.shape[0]):   # 很多字母的概率都很大，很难区分出来！
+                #     # 分别找到概率最大和最小的位置，从而可找到相应的字母: 比实际位置+1了？
+                #     pos = list(map(list(outputs[k][0]).index, heapq.nlargest(2, list(outputs[k][0]))))
+                #     # print(pos)
+                #     predict.append(pos[0])
+                #     # print(np.max(outputs[k][0]), np.min(outputs[k][0]))
+                #     if k == 0:
+                #         # print(outputs[k][0][0:37])
+                #         print("OUTPUT SHAPE:", outputs.shape)
+                #     # for j in range(outputs[k][0].size):
+                #         # if outputs[k][0][j] > 0.8:
+                #             # print(j, outputs[k][0][j])
 
                 print("OUTPUTS:", type(outputs), outputs.size, outputs.shape)
-                print("PREDICT:", predict)
-                print("DECODED:", type(decoded), decoded)                    # decoded[0]为Sparse值的位置, [1]为值，[2]为shape
-
-                result_str = self.adjust_label(predict)
+                # print("PREDICT:", predict)
+                print("DECODED:", decoded[1])                    # decoded[0]为Sparse值的位置, [1]为值，[2]为shape
 
                 result_str = self.adjust_label(decoded[1])
                 return result_str
 
+from GenTrainingData import image_convert
+from VerifycodeImgConvert import ImagePretreatment
 
 def main():
     # if tf.app.flags.FLAGS.mode == "train":
@@ -476,21 +501,38 @@ def main():
         sc.train_model()
     else:
         print("Predicting ....")
-        image = cv2.imread("./make_tfrecords/images/captcha_png/4TV0_1530629973.png", 1)
-        # image = cv2.imread("./make_tfrecords/images/captcha_png/0FJP_1530629934.png", 1)
-        # image = cv2.imread("./char6.png", 1)
+        # image = image_convert('./training_data/test_img/01C4.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/test_img/2HXqe.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/test_img/0Y.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/test_img/Yi24.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/test_img/58.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        image = image_convert('./training_data/test_img/3CkeDUkmsr.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/test_img/cqqPacl6H.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/test_img/nq3RbhAbF.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/test_img/eH.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/train_img/0I2Kl.png', conv_size=(32, 180), conv_color=[255, 255, 255])
 
-        # image = cv2.imread("./make_tfrecords/images/captcha_png/O3K5_1530629902.png", 1)
+        # image = image_convert('./training_data/2mTZ0.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/2mTZ0 - 1.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/6m44.jpg', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/7364.jpg', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/0jj.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # image = image_convert('./training_data/sjh.jpg', conv_size=(32, 180), conv_color=[255, 255, 255])
+        # cv2.imwrite('./training_data/temp.png', image)
+        # image = ImagePretreatment('./training_data/temp.png')
+        # cv2.imwrite('./training_data/temp1.png', image)
+        # image = image_convert('./training_data/temp1.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+
+        # image = cv2.imread("./training_data/test_img/2HXqe.png", 1)
 
         cv2.namedWindow("Image")
         cv2.imshow("Image", image)
         cv2.waitKey(2)
 
-
         sc = SlidingConvolution(is_train=False)
-        # print(sc.adjust_label([12, 10, 1, 5]))
         sc.predict_model(image)
-        sc.predict_model(255-image)
+
+        # sc.predict_model(255-image)
 
 
 if __name__ == '__main__':

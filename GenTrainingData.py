@@ -107,6 +107,7 @@ def get_char_code(dict_list, char):
 
 # 对图形文件进行转换，填充为指定大小：填充0或255
 def image_convert(imgfile, conv_size=(32, 280), conv_color=[0, 0, 0]):
+
     img = cv2.imread(imgfile, cv2.IMREAD_GRAYSCALE)
 
     if img.ndim == 3:
@@ -149,7 +150,7 @@ def gen_tfrecord(img_path, output_path, file_label=TRAINFILE_LABEL, rec_file=TRA
 
     # char_dict.txt文件是否存在
     full_char_dict = os.path.join(output_path, CHAR_DICT)
-    if rec_file == TRAIN_RECORD_FILE:       # 要先执行TRAIN_RECORD_FILE, 这是才重新生成char_dict
+    if rec_file == TRAIN_RECORD_FILE:       # 要先执行TRAIN_RECORD_FILE, 这时才重新生成char_dict
         if os.path.isfile(full_char_dict):
             print("%s exists, now deleted!" % full_char_dict)
             os.remove(full_char_dict)
@@ -199,8 +200,23 @@ def gen_tfrecord(img_path, output_path, file_label=TRAINFILE_LABEL, rec_file=TRA
                 'img_raw': tf.train.Feature(bytes_list=tf.train.BytesList(value=[img_raw])),
                 # [img_raw]表示为[280,32,1],只考虑1个通道
             }))
+            writer.write(example.SerializeToString())  # Serialize To String
 
-        writer.write(example.SerializeToString())  # Serialize To String
+            img = Image.open(img_name)
+            resized = img.resize((img.size[0]*2, img.size[1]))
+            # img.show()
+            resized.save("./temp.png")
+
+            img = image_convert("./temp.png", conv_size=[img_size[1], img_size[0]], conv_color=[255, 255, 255])
+            img_raw = img.tobytes()
+            # label = np.asarray(item_label, dtype=np.int64)
+
+            example = tf.train.Example(features=tf.train.Features(feature={
+                'label': tf.train.Feature(int64_list=tf.train.Int64List(value=label)),
+                'img_raw': tf.train.Feature(bytes_list=tf.train.BytesList(value=[img_raw])),
+            }))
+
+            writer.write(example.SerializeToString())  # Serialize To String
 
     fp.close()
     writer.close()
@@ -283,34 +299,100 @@ def read_tfrecord(recfile_path, recfile_name=TRAIN_RECORD_FILE, img_size=[32, 28
     return img, label
 
 
+def parser(record):
+    features = tf.parse_single_example(
+        record,
+        features={
+            'label': tf.VarLenFeature(tf.int64),
+            'img_raw': tf.FixedLenFeature([], tf.string)
+        }
+    )
+
+    label = tf.cast(features['label'], tf.int64)
+    img = tf.decode_raw(features['img_raw'], tf.uint8)
+
+    return img, label
+
+from sklearn.model_selection import train_test_split
+
+# 读取TFReords数据，可进行训练，验证和测试数据划分！
+def get_training_test_data(train_files, num_epochs=1, batch_size=1, shuffle=False, shuffle_buffer=20000, test_size=0.1):        # shuffle_buffer定义随机打乱数据时buffer的大小
+    dataset = tf.data.TFRecordDataset(train_files)
+    dataset = dataset.map(parser)
+
+    if shuffle:
+        print("shuffle")
+        dataset = dataset.shuffle(shuffle_buffer).batch(batch_size)                   # 是否打乱数据
+
+    dataset = dataset.repeat(num_epochs)
+
+    iterator = dataset.make_initializable_iterator()
+    image_batch, label_batch = iterator.get_next()
+
+    with tf.Session() as sess:
+        sess.run((tf.global_variables_initializer(), tf.local_variables_initializer()))
+
+        sess.run(iterator.initializer)
+        image_list = []
+        label_list = []
+        while True:
+            try:
+                image, label = sess.run([image_batch, label_batch])
+                # print(image, label)
+                image_list.append(image)
+                label_list.append(label)
+            except tf.errors.OutOfRangeError:
+                break
+
+    X_train, X_test, y_train, y_test = train_test_split(image_list, label_list, test_size=test_size, shuffle=False)
+    return X_train, X_test, y_train, y_test
 #
 # Main:
 #
 
 # dictList = []
+def main():
+    train_img_path = './training_data/train_img'
+    test_img_path = './training_data/test_img'
+    output_path = './training_data'
 
-train_img_path = './training_data/train_img'
-test_img_path = './training_data/test_img'
-output_path = './training_data'
+    # read_tfrecord(output_path, img_size=[32, 180], show_num=10)
+    # read_tfrecord(output_path, recfile_name=TEST_RECORD_FILE, img_size=[32, 180], show_num=5)
 
-# read_tfrecord(output_path, img_size=[32, 180], show_num=10)
-# read_tfrecord(output_path, recfile_name=TEST_RECORD_FILE, img_size=[32, 180], show_num=5)
-# exit(1)
+    # read_tfrecord(output_path, img_size=[32, 180], show_num=5)
+    record_name = output_path + "/" + TRAIN_RECORD_FILE
+    #
+    X_train, X_test, y_train, y_test = get_training_test_data(record_name, shuffle_buffer=50000)
+    print(len(X_train), type(X_train[0]), X_train[0])
+    img = X_train[8].reshape([32, 180])
+    # img = 255-img
+    imgo = Image.fromarray(img)
+    imgo.show()
 
-# 1.生成标签列表文件：
-gen_image_label(train_img_path, output_path, TRAINFILE_LABEL)
-gen_image_label(test_img_path, output_path, TESTFILE_LABEL)
-# csvfile = "./data/problem3/content_train.csv"
-# gen_ocr_image_label(csvfile, output_path)
+    print(len(y_train), type(y_train), y_train[8])
+    print(len(X_test), type(X_test), X_test[0])
+    print(len(y_test), type(y_test), y_test[0])
+    exit(1)
 
-# 2. 生成TFRecord文件：
-# 训练集：
-gen_tfrecord(train_img_path, output_path, img_size=[180, 32])
-# 测试集：
-gen_tfrecord(test_img_path, output_path, file_label=TESTFILE_LABEL, rec_file=TEST_RECORD_FILE, img_label=TEST_LABEL, img_size=[180, 32])
-# image_convert('./training_data/captcha_img/0cODdY2jW7.png', conv_size=(32, 180), conv_color=[255, 255, 255])
 
-# 3. 读取TFRecord并显示图片：show_num为显示的数量
-read_tfrecord(output_path, img_size=[32, 180], show_num=5)
-read_tfrecord(output_path, recfile_name=TEST_RECORD_FILE, img_size=[32, 180], show_num=5)
+    # 1.生成标签列表文件：
+    # gen_image_label(train_img_path, output_path, TRAINFILE_LABEL)
+    # gen_image_label(test_img_path, output_path, TESTFILE_LABEL)
+    # csvfile = "./data/problem3/content_train.csv"
+    # gen_ocr_image_label(csvfile, output_path)
 
+    # 2. 生成TFRecord文件：
+    # 训练集：
+    gen_tfrecord(train_img_path, output_path, img_size=[180, 32])
+    # 测试集：
+    # gen_tfrecord(test_img_path, output_path, file_label=TESTFILE_LABEL, rec_file=TEST_RECORD_FILE, img_label=TEST_LABEL, img_size=[180, 32])
+
+    # 3. 读取TFRecord并显示图片：show_num为显示的数量
+    read_tfrecord(output_path, img_size=[32, 180], show_num=5)
+    # read_tfrecord(output_path, recfile_name=TEST_RECORD_FILE, img_size=[32, 180], show_num=5)
+
+    # image_convert('./training_data/captcha_img/0cODdY2jW7.png', conv_size=(32, 180), conv_color=[255, 255, 255])
+
+
+if __name__ == '__main__':
+    main()
